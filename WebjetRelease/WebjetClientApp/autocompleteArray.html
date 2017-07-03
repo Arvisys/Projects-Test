@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+ <head>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	
+	<script type="text/javascript">
+		$(function(){
+			 
+					
+//note the array has to be label as 1st item but the next one can be id , val , code anything 
+
+		 var tags1 = [
+    {"label": "ActionScript", "value": '1'},
+    {"label": "AppleScript", "value": '2'},
+    {"label": "Asp", "value": '3'}
+];
+
+
+var tags = [{'label': 'StarWars', 'value': 0076759},
+     		{'label': 'StarEpisode', 'value': 0080684}];
+
+
+
+
+$("#txt1").autocomplete({
+   minLength: 1, 
+   source: tags,
+   select: function (event, ui) {
+        $("#code").val(ui.item.value);
+}
+});
+
+//note the array has to be label as 1st item but the next one can be id , val , code anything 
+    
+var val = [
+				{"label": "name1", "Id": 0},
+                {"label": "name2","Id": 1 },
+                {"label": "n3a3me3","Id": 2 },
+                {"label": "name4",  "Id": 3}];
+
+
+$( "#tags" ).autocomplete({ 
+    source: val,
+	   minLength: 2, 
+    select: function (event, ui) {
+        $("#tags_code").val(ui.item.Id);  
+    }
+});
+		 
+});			
+
+
+
+
+ $(function() {
+  	var availableTags = [
+	{key: "1",value: "NAME 1"},{key: "2",value: "NAME 2"},{key: "3",value: "NAME 3"},{key: "4",value: "NAME 4"},{key: "5",value: "NAME 5"}
+	 ];
+	
+    $( "#project-name" ).autocomplete({
+      minLength: 0,
+      source: availableTags,
+      focus: function( event, ui ) {
+        $( "#project-name" ).val( ui.item.value );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#project-name" ).val( ui.item.value );
+        $( "#project-id" ).val( ui.item.key );
+ 
+        return false;
+      } 
+	  });
+ 
+  });
+ 
+	</script>
+ </script>
+
+
+ </head>
+ <body>
+
+ <input id="project-name" name="project2" id="searchbox"/>
+<input  type="text" id="project-id" />
+
+   <input id="txt1" type="text" value="" />
+   <input id="code" type="text" value="" />
+
+<input id="tags" name="name">
+<input id="tags_code" name="code">
+
+ </body>
+</html>
